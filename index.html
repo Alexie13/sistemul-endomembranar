@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sistemul Endomembranar - Biogenius Academy</title>
+    <style>
+        :root {
+            --primary-color: #00e6c0;
+            --secondary-color: #00b3a1;
+            --background-color: #021726;
+            --dark-color: #01111b;
+            --text-color: #ffffff;
+            --sidebar-width: 250px;
+            --header-height: 60px;
+            --card-background: rgba(0, 230, 192, 0.1);
+            --card-border: rgba(0, 230, 192, 0.3);
+            --orange-neon: #FF9500;
+            --orange-dark: #FF5E3A;
+            --yellow-neon: #FFD60A;
+            --yellow-dark: #FFC107;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            transition: margin-left 0.4s ease;
+        }
+
+        /* Header Styles */
+        header {
+            height: var(--header-height);
+            background-color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo svg {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-top: var(--header-height);
+            padding: 20px;
+            transition: margin-left 0.4s ease;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        .page-title {
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
+            text-align: center;
+            color: var(--primary-color);
+            margin-top: 30px;
+            font-size: 2.2rem;
+        }
+
+        .page-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .content-section {
+            background-color: var(--card-background);
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+            padding: 30px;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .content-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .right-align {
+            padding-left: 25px;
+            display: block;
+        }
+
+        .titlu-2 {
+            padding-left: 10px;
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin: 30px 0 20px 0;
+        }
+
+        /* Toggle Content Styles */
+        .title-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 230, 192, 0.2);
+            padding: 10px 20px;
+            border-radius: 10px 10px 0 0;
+            border: 1px solid var(--card-border);
+            margin-top: 30px;
+        }
+
+        .title {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            text-align: center;
+            width: 100%;
+        }
+
+        .toggle-btn {
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .content-box {
+            border: 1px solid var(--card-border);
+            border-top: none;
+            padding: 20px;
+            border-radius: 0 0 10px 10px;
+            background-color: rgba(0, 230, 192, 0.05);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            background-color: rgba(0, 230, 192, 0.1);
+            border: 1px dashed var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            border-radius: 10px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .poza {
+            padding: 25px 0;
+            text-align: center;
+        }
+
+        .poza-2 {
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .home-button {
+            position: fixed;
+            top: 80px;
+            left: 20px;
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 9;
+            transition: all 0.3s ease;
+        }
+
+        .home-button:hover {
+            transform: scale(1.1);
+            background-color: var(--secondary-color);
+        }
+
+        .home-icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--dark-color);
+        }
+
+        /* Brain Decoration */
+        .brain-decoration {
+            position: fixed;
+            bottom: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            opacity: 0.1;
+            z-index: -1;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300e6c0'%3E%3Cpath d='M12 2c1.9 0 3.6.8 4.8 2 1.2 1.2 2 2.9 2 4.8 0 3.2-2.2 5.8-5.2 6.6v.6c0 1.1-.9 2-2 2h-.4c-1.1 0-2-.9-2-2v-.6C6.2 14.6 4 12 4 8.8c0-1.9.8-3.6 2-4.8C7.4 2.8 9.1 2 11 2h1zm0 2c-1.3 0-2.5.5-3.4 1.4-.9.9-1.4 2.1-1.4 3.4 0 2.2 1.5 4.1 3.6 4.7.2.1.4.3.4.5v1c0 .6.4 1 1 1h.8c.6 0 1-.4 1-1v-1c0-.2.2-.4.4-.5 2.1-.6 3.6-2.5 3.6-4.7 0-1.3-.5-2.5-1.4-3.4-.9-.9-2.1-1.4-3.4-1.4h-1z'/%3E%3C/svg%3E");
+            background-size: cover;
+            background-repeat: no-repeat;
+            transform: rotate(45deg);
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            body, html {
+                overflow-x: hidden;
+                width: 100%;
+                position: relative;
+            }
+            
+            .container {
+                width: 100%;
+                overflow-x: hidden;
+            }
+            
+            .content-section {
+                padding: 20px 15px;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .home-button {
+                width: 40px;
+                height: 40px;
+                top: 70px;
+                left: 10px;
+            }
+            
+            .home-icon {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .titlu-2 {
+                font-size: 1.4rem;
+                padding-left: 5px;
+            }
+            
+            .right-align {
+                padding-left: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content-section {
+                padding: 15px 10px;
+            }
+
+            .logo h1 {
+                font-size: 0.9rem;
+            }
+            
+            .main-content {
+                padding: 15px 10px;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
+                margin-top: 20px;
+            }
+            
+            .right-align {
+                padding-left: 10px;
+            }
+            
+            .title-container {
+                padding: 8px 15px;
+            }
+            
+            .title {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Header pentru versiunea mobilă */
+        @media (max-width: 360px) {
+            header {
+                height: 50px;
+                padding: 0 10px;
+            }
+            
+            .logo h1 {
+                font-size: 0.9rem;
+                padding-left: 35px; /* Redus spațiul pentru iconița home */
+                white-space: nowrap;
+            }
+            
+            .logo svg {
+                width: 25px;
+                height: 25px;
+            }
+            
+            .home-button {
+                width: 26px;
+                height: 26px;
+                padding: 5px;
+            }
+            
+            .home-button i {
+                font-size: 0.7rem;
+            }
+            
+            .main-content {
+                margin-top: 60px;
+                padding: 8px;
+            }
+            
+            .content-section {
+                padding: 12px;
+            }
+            
+            .page-title {
+                font-size: 1.4rem;
+            }
+            
+            .section-title {
+                font-size: 1.2rem;
+            }
+            
+            p, li {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="brain-decoration"></div>
+    
+    <!-- Header -->
+    <header>
+        <div style="width: 30px;"></div> <!-- Spațiu gol pentru echilibru -->
+        <div class="logo">
+            <svg width="40" height="40" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#00e6c0" stroke-width="2" />
+                <path d="M30,50 Q40,30 50,50 Q60,70 70,50" fill="none" stroke="#00e6c0" stroke-width="2" />
+                <path d="M30,40 Q50,20 70,40" fill="none" stroke="#00e6c0" stroke-width="2" />
+                <path d="M30,60 Q50,80 70,60" fill="none" stroke="#00e6c0" stroke-width="2" />
+                <path d="M45,35 Q50,30 55,35" fill="none" stroke="#00e6c0" stroke-width="2" />
+                <path d="M45,65 Q50,70 55,65" fill="none" stroke="#00e6c0" stroke-width="2" />
+            </svg>
+            <h1>BIOGENIUS ACADEMY</h1>
+        </div>
+        <div style="width: 30px;"></div> <!-- Spațiu gol pentru echilibru -->
+    </header>
+
+    <!-- Back Button -->
+    <a href="https://alexie13.github.io/citologie/#sectiunea_dorita" class="home-button">
+        <svg class="home-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+    </a>
+
+    <!-- Main Content -->
+    <div class="container" id="container">
+        <div class="main-content">
+            <h1 class="page-title">Sistemul Endomembranar</h1>
+            
+            <div class="content-section">
+                <h2 class="subtitlu">Ce este sistemul endomembranar?</h2>
+                <p>Sistemul endomembranar (prefixul "endo", care înseamnă „înăuntru") reprezintă un ansamblu integrat de membrane și organite din celulele eucariote, care acționează împreună pentru modificarea, ambalarea și transportul lipidelor și proteinelor. Acesta cuprinde: Reticulul endoplasmatic, aparatul Golgi și lizozomii.</p>
+                
+                <div class="titlu-2"><b>1) Reticulul endoplasmatic:</b></div>
+                <p>Reticulul endoplasmatic (RE) are un rol esențial în modificarea proteinelor și sinteza lipidelor. Acesta este compus dintr-o rețea complexă de tubuli membranoși și saci aplatizați, iar structurile ce-l alcătuiesc sunt libere de conținut. Spațiul interior al acestor tubuli și saci se numește lumen.</p>
+                
+                <p>Reticulul endoplasmatic se împarte în două tipuri principale:</p>
+                
+                <p><b>a) Reticulul Endoplasmatic Rugos (RER):</b></p>
+                <p>Reticulul endoplasmatic rugos (RER) își primește denumirea de la ribozomii atașați pe suprafața sa citoplasmatică, care îi conferă un aspect „rugos". Ribozomii de pe RER sintetizează proteine, iar aceste lanțuri proteice nou formate sunt introduse în lumenul reticulului. Unele proteine sunt complet transferate în interiorul RER, unde plutesc liber, în timp ce altele rămân ancorate de membrana acestuia.</p>
+                
+                <p>R.E Rugos:</p>
+                <p>- prezinta ribozomi pr suprafata sa</p>
+                <p>- este in contact cu membrana nucleara</p>
+                <p>- are rol in sinteza proteinelor</p>
+                
+                <div class="poza">
+                    <div class="image-placeholder">Imagine Reticul Endoplasmatic Rugos</div>
+                </div>
+                
+                <p><b>b) Reticulul Endoplasmatic Neted (REN):</b></p>
+                <p>Reticulul endoplasmatic neted (REN) este o continuare a reticulului endoplasmatic rugos (RER), dar, spre deosebire de acesta, are foarte puțini sau niciun ribozom atașat pe suprafața sa citoplasmatică. REN îndeplinește mai multe funcții esențiale, printre care:</p>
+                <p>• Sinteza carbohidraților, lipidelor și hormonilor steroizi: REN este implicat în producerea acestor molecule, care sunt fundamentale pentru structurile și funcțiile celulare.</p>
+                <p>• Detoxifierea substanțelor toxice: REN metabolizează și neutralizează toxinele provenite din medicamente, otrăvuri sau alte compuși nocivi, contribuind la protecția celulară.</p>
+                <p>• Stocarea ionilor de calciu: REN joacă un rol important în reglarea concentrației de calciu, un element esențial pentru semnalizarea celulară și activitățile metabolice.</p>
+                
+                <p>În celulele musculare, există o formă specializată de REN, cunoscută sub numele de reticul sarcoplasmic, care este responsabil de stocarea ionilor de calciu. Acești ioni sunt indispensabili pentru declanșarea contracțiilor musculare și pentru funcționarea optimă a țesutului muscular.</p>
+                
+                <p>De asemenea, în cadrul reticulului endoplasmatic rugos există porțiuni „netede" care servesc drept zone de ieșire pentru vezicule. Aceste porțiuni sunt cunoscute sub denumirea de reticul tranzițional și joacă un rol în transportul substanțelor sintetizate către alte compartimente celulare. Această interacțiune dintre RER și REN subliniază colaborarea strânsă între diferitele regiuni ale reticulului endoplasmatic.</p>
+                
+                <div class="poza">
+                    <div class="image-placeholder">Imagine Reticul Endoplasmatic Neted</div>
+                </div>
+                
+                <div class="title-container">
+                    <h2 class="title">Observație microscopică a RE</h2>
+                    <button class="toggle-btn">+</button>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <div class="poza">
+                        <div class="image-placeholder">Imagine microscopică a Reticulului Endoplasmatic</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <div class="titlu-2"><b>2) Aparatul Golgi:</b></div>
+                <p>După ce veziculele se desprind de reticulul endoplasmatic (RE), ele nu își livrează imediat conținutul la destinația finală. Înainte de aceasta, lipidele și proteinele din interiorul veziculelor trebuie să treacă printr-un proces de sortare, ambalare și etichetare pentru a fi direcționate corect. Acest proces important are loc în aparatul Golgi, un organit format dintr-o serie de cisterne aplatizate, învelite de membrane. Aparatul Golgi funcționează ca un centru de distribuție al celulei, asigurând că fiecare proteină sau lipidă este trimisă la locul potrivit, fie în interiorul celulei, fie în afara acesteia.</p>
+                
+                <p>Aparatul Golgi are două părți distincte: partea receptoare, denumită fața cis, și partea opusă, numită fața trans. Veziculele de transport provenite de la reticulul endoplasmatic (RE) ajung la fața cis, unde se unesc cu membrana acesteia și își eliberează conținutul în lumenul aparatului Golgi.</p>
+                
+                <p>Pe parcursul trecerii prin aparatul Golgi, proteinele și lipidele sunt supuse unor modificări suplimentare. Printre aceste modificări se numără adăugarea sau eliminarea de lanțuri scurte de zaharuri, precum și atașarea unor grupări fosfat, care acționează ca etichete de identificare. Aceste modificări sunt esențiale pentru funcționalitatea și direcționarea corectă a moleculelor procesate.</p>
+                
+                <p>Procesarea carbohidraților poate fi ilustrată prin câștigul sau pierderea unor ramificații de zaharuri atașate la proteine. Modificările structurale și funcționale realizate în aparatul Golgi sunt vitale pentru asigurarea că proteinele și lipidele ajung la locul potrivit în interiorul sau în exteriorul celulei.</p>
+                
+                <div class="poza">
+                    <div class="image-placeholder">Imagine Aparat Golgi</div>
+                </div>
+                
+                <div class="title-container">
+                    <h2 class="title">Aparatul Golgi în diferite celule</h2>
+                    <button class="toggle-btn">+</button>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <p>Celulele care sunt specializate în secreția unei cantități mari de proteine, precum celulele glandelor salivare ce produc enzime digestive sau celulele sistemului imunitar responsabile de eliberarea anticorpilor, dispun de un număr mare de cisterne Golgi. Acest lucru le permite să proceseze și să transporte eficient proteinele destinate secreției.</p>
+                    
+                    <p>În celulele vegetale, aparatul Golgi are un rol suplimentar, fiind implicat în sinteza polizaharidelor — carbohidrați cu lanț lung. Unele dintre aceste polizaharide sunt integrate în structura peretelui celular, contribuind la stabilitatea și funcționalitatea acestuia.</p>
+                </div>
+                
+                <div class="title-container">
+                    <h2 class="title">Observarea microscopică a Aparatului Golgi</h2>
+                    <button class="toggle-btn">+</button>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <div class="poza">
+                        <div class="image-placeholder">Imagine microscopică a Aparatului Golgi</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <div class="titlu-2"><b>3) Lizozomii:</b></div>
+                <p>Lizozomul este un organit specializat prezent în celulele animale, care conține enzime digestive și îndeplinește rolul unui „centru de reciclare" al celulei. Principala sa funcție este descompunerea structurilor celulare vechi, deteriorate sau inutile, transformând componentele lor în molecule mai simple ce pot fi reutilizate de celulă pentru diverse procese metabolice.</p>
+                
+                <p>Fiind parte a sistemului endomembranar, lizozomii sunt esențiali pentru menținerea homeostaziei celulare. Unele vezicule formate și eliberate de aparatul Golgi sunt direcționate către lizozomi, transportând materialele necesare pentru funcționarea lor optimă, precum enzimele hidrolitice. Această colaborare strânsă între organite asigură eficiența proceselor de degradare și reciclare în interiorul celulei.</p>
+                
+                <p>Lizozomii au capacitatea de a digera particule străine care sunt captate de celulă din mediul extern. Un exemplu relevant este dat de macrofage, un tip de globule albe din sânge ce joacă un rol crucial în sistemul imunitar uman. Într-un proces denumit fagocitoză, membrana celulară a macrofagului se invaginează, adică se curbează spre interior, pentru a înconjura și captura un agent patogen. Odată capturat, patogenul este închis într-o veziculă numită fagosom, care se combină ulterior cu un lizozom. Enzimele digestive din lizozom descompun agentul patogen, neutralizând astfel amenințarea și reciclând componentele rezultate pentru reutilizarea lor de către celulă. Acest mecanism complex este esențial pentru apărarea organismului împotriva infecțiilor și menținerea sănătății.</p>
+                
+                <div class="poza">
+                    <div class="image-placeholder">Imagine Lizozomi</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Selectează toate butoanele de expandare
+            const toggleBtns = document.querySelectorAll('.toggle-btn');
+            
+            // Adaugă un event listener pentru fiecare buton
+            toggleBtns.forEach(function(btn, index) {
+                // Dă fiecărui set de elemente un ID unic
+                const contentId = 'content-box-' + index;
+                
+                // Obține caseta de conținut corespunzătoare
+                const contentBox = btn.closest('.title-container').nextElementSibling;
+                
+                // Adaugă ID la caseta de conținut
+                contentBox.id = contentId;
+                
+                // Activate the first content box by default (open it automatically)
+                if (index === 0) {
+                    contentBox.style.display = 'block';
+                    btn.textContent = '−';
+                }
+                
+                // Adaugă evenimentul de click
+                btn.addEventListener('click', function() {
+                    const targetBox = document.getElementById(contentId);
+                    
+                    if (targetBox.style.display === 'none') {
+                        targetBox.style.display = 'block';
+                        btn.textContent = '−';
+                    } else {
+                        targetBox.style.display = 'none';
+                        btn.textContent = '+';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
