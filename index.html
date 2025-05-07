@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sistemul de citomembrane - Biogenius Academy</title>
+    <title>Sistemul Endomembranar - Biogenius Academy</title>
     <style>
         :root {
             --primary-color: #00e6c0;
@@ -197,20 +197,26 @@
         }
 
         .image-placeholder {
-            width: 100%;
-            max-width: 600px;
-            height: 400px;
-            background-color: rgba(0, 230, 192, 0.1);
-            border: 1px dashed var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px auto;
-            border-radius: 10px;
-            color: var(--primary-color);
-            font-weight: bold;
-        }
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%; /* Raport 16:9, poți ajusta în funcție de nevoie */
+    background-color: #ffffff; /* Fundal alb pentru container */
+    border: 2px dashed var(--primary-color);
+    margin: 20px 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
 
+.image-placeholder img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Păstrează imaginea completă fără tăieri */
+    background-color: #ffffff; /* Fundal alb pentru zonele neacoperite de imagine */
+    display: block;
+}
         .poza {
             padding: 25px 0;
             text-align: center;
@@ -421,11 +427,11 @@
     <!-- Main Content -->
     <div class="container" id="container">
         <div class="main-content">
-            <h1 class="page-title">Sistemul de citomembrane</h1>
+            <h1 class="page-title">Sistemul Endomembranar</h1>
             
             <div class="content-section">
-                <h2 class="subtitlu">Ce este sistemul de citomembrane?</h2>
-                <p>Sistemul de citomembrane reprezintă un ansamblu integrat de membrane și organite din celulele eucariote, care acționează împreună pentru modificarea, ambalarea și transportul lipidelor și proteinelor. Acesta cuprinde: Reticulul endoplasmatic, aparatul Golgi și lizozomii.</p>
+                <h2 class="subtitlu">Ce este sistemul endomembranar?</h2>
+                <p>Sistemul endomembranar (prefixul "endo", care înseamnă „înăuntru") reprezintă un ansamblu integrat de membrane și organite din celulele eucariote, care acționează împreună pentru modificarea, ambalarea și transportul lipidelor și proteinelor. Acesta cuprinde: Reticulul endoplasmatic, aparatul Golgi și lizozomii.</p>
                 
                 <div class="titlu-2"><b>1) Reticulul endoplasmatic:</b></div>
                 <p>Reticulul endoplasmatic (RE) are un rol esențial în modificarea proteinelor și sinteza lipidelor. Acesta este compus dintr-o rețea complexă de tubuli membranoși și saci aplatizați, iar structurile ce-l alcătuiesc sunt libere de conținut. Spațiul interior al acestor tubuli și saci se numește lumen.</p>
@@ -441,7 +447,7 @@
                 <p>- are rol in sinteza proteinelor</p>
                 
                 <div class="poza">
-                    <div class="image-placeholder">Imagine Reticul Endoplasmatic Rugos</div>
+                    <div class="image-placeholder"><img src="invelis nuclear.png" width="100%" height="auto"></div>
                 </div>
                 
                 <p><b>b) Reticulul Endoplasmatic Neted (REN):</b></p>
@@ -454,9 +460,7 @@
                 
                 <p>De asemenea, în cadrul reticulului endoplasmatic rugos există porțiuni „netede" care servesc drept zone de ieșire pentru vezicule. Aceste porțiuni sunt cunoscute sub denumirea de reticul tranzițional și joacă un rol în transportul substanțelor sintetizate către alte compartimente celulare. Această interacțiune dintre RER și REN subliniază colaborarea strânsă între diferitele regiuni ale reticulului endoplasmatic.</p>
                 
-                <div class="poza">
-                    <div class="image-placeholder">Imagine Reticul Endoplasmatic Neted</div>
-                </div>
+                
                 
                 <div class="title-container">
                     <h2 class="title">Observație microscopică a RE</h2>
@@ -464,7 +468,7 @@
                 </div>
                 <div class="content-box" style="display: none;">
                     <div class="poza">
-                        <div class="image-placeholder">Imagine microscopică a Reticulului Endoplasmatic</div>
+                        <div class="image-placeholder"><img src="Observație microscopică a RE.png" width="100%" height="auto"></div>
                     </div>
                 </div>
             </div>
@@ -473,6 +477,10 @@
                 <div class="titlu-2"><b>2) Aparatul Golgi:</b></div>
                 <p>După ce veziculele se desprind de reticulul endoplasmatic (RE), ele nu își livrează imediat conținutul la destinația finală. Înainte de aceasta, lipidele și proteinele din interiorul veziculelor trebuie să treacă printr-un proces de sortare, ambalare și etichetare pentru a fi direcționate corect. Acest proces important are loc în aparatul Golgi, un organit format dintr-o serie de cisterne aplatizate, învelite de membrane. Aparatul Golgi funcționează ca un centru de distribuție al celulei, asigurând că fiecare proteină sau lipidă este trimisă la locul potrivit, fie în interiorul celulei, fie în afara acesteia.</p>
                 
+                <div class="poza">
+                    <div class="image-placeholder"><img src="aparatul golgi.png" width="100%" height="auto"></div>
+                </div>
+                
                 <p>Aparatul Golgi are două părți distincte: partea receptoare, denumită fața cis, și partea opusă, numită fața trans. Veziculele de transport provenite de la reticulul endoplasmatic (RE) ajung la fața cis, unde se unesc cu membrana acesteia și își eliberează conținutul în lumenul aparatului Golgi.</p>
                 
                 <p>Pe parcursul trecerii prin aparatul Golgi, proteinele și lipidele sunt supuse unor modificări suplimentare. Printre aceste modificări se numără adăugarea sau eliminarea de lanțuri scurte de zaharuri, precum și atașarea unor grupări fosfat, care acționează ca etichete de identificare. Aceste modificări sunt esențiale pentru funcționalitatea și direcționarea corectă a moleculelor procesate.</p>
@@ -480,7 +488,7 @@
                 <p>Procesarea carbohidraților poate fi ilustrată prin câștigul sau pierderea unor ramificații de zaharuri atașate la proteine. Modificările structurale și funcționale realizate în aparatul Golgi sunt vitale pentru asigurarea că proteinele și lipidele ajung la locul potrivit în interiorul sau în exteriorul celulei.</p>
                 
                 <div class="poza">
-                    <div class="image-placeholder">Imagine Aparat Golgi</div>
+                    <div class="image-placeholder"><img src="poza verticala.png" width="100%" height="auto"></div>
                 </div>
                 
                 <div class="title-container">
@@ -499,7 +507,7 @@
                 </div>
                 <div class="content-box" style="display: none;">
                     <div class="poza">
-                        <div class="image-placeholder">Imagine microscopică a Aparatului Golgi</div>
+                        <div class="image-placeholder"><img src="Observarea microscopică a Aparatului Golgi.png" width="100%" height="auto"></div>
                     </div>
                 </div>
             </div>
@@ -513,7 +521,7 @@
                 <p>Lizozomii au capacitatea de a digera particule străine care sunt captate de celulă din mediul extern. Un exemplu relevant este dat de macrofage, un tip de globule albe din sânge ce joacă un rol crucial în sistemul imunitar uman. Într-un proces denumit fagocitoză, membrana celulară a macrofagului se invaginează, adică se curbează spre interior, pentru a înconjura și captura un agent patogen. Odată capturat, patogenul este închis într-o veziculă numită fagosom, care se combină ulterior cu un lizozom. Enzimele digestive din lizozom descompun agentul patogen, neutralizând astfel amenințarea și reciclând componentele rezultate pentru reutilizarea lor de către celulă. Acest mecanism complex este esențial pentru apărarea organismului împotriva infecțiilor și menținerea sănătății.</p>
                 
                 <div class="poza">
-                    <div class="image-placeholder">Imagine Lizozomi</div>
+                    <div class="image-placeholder"><img src="lizozomii.png" width="100%" height="auto"></div>
                 </div>
             </div>
         </div>
